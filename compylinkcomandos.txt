@@ -1,0 +1,9 @@
+
+------COMPILAR Y LINKEAR------
+gcc -Wall -Werror -pedantic -ggdb <nombre del archivo> -o <nombre del ejecutable>
+objdump -d -S <nombre del ejecutable>
+./<nombre del ejecutable>
+
+-----COMPILAR A CODIGO OBJETO (osea no linkear)-----
+gcc -Wall -Werror -pedantic -ggdb -c <nombre del archivo> -o <nombre del codigo objeto>.o
+objdump -d -S <nombre del codigo objeto>
