@@ -1,3 +1,0 @@
-alice  33  2001   azul
-bob 21 1000 rojo
-charlie     25 1200     rojo
