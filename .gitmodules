@@ -1,0 +1,12 @@
+[submodule "Tp-Duck-Game-7"]
+	path = Tp-Duck-Game-7
+	url = https://github.com/FacuGerez/Tp-Duck-Game-7.git
+[submodule "onboarding-2024c2-FacuGerez"]
+	path = onboarding-2024c2-FacuGerez
+	url = https://github.com/Taller-de-Programacion-TPs/onboarding-2024c2-FacuGerez.git
+[submodule "sockets-2024c2-FacuGerez"]
+	path = sockets-2024c2-FacuGerez
+	url = https://github.com/Taller-de-Programacion-TPs/sockets-2024c2-FacuGerez.git
+[submodule "threads-2024c2-FacuGerez"]
+	path = threads-2024c2-FacuGerez
+	url = https://github.com/Taller-de-Programacion-TPs/threads-2024c2-FacuGerez.git
