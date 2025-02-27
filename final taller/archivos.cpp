@@ -6,16 +6,18 @@
 #include <cstdint>
 #include <unistd.h>
 
-int prueba1(char *nombre){
-    FILE *archivo = fopen(nombre, "r+b");
-    if(archivo == NULL) return -1;
+// Escribir un programa ISO C que procese el archivo “nros2bytes.dat” sobre sí mismo,
+// duplicando los enteros de 2 bytes múltiplos de 3.
 
+int main(){
+    FILE *archivo = fopen("nros2bytes.dat", "r+b");
+    if(archivo == NULL) return -1;
 
     uint16_t number;
     while (fread(&number, sizeof(uint16_t), 1, archivo) == 1){
         if (number % 3 == 0){
             fseek(archivo, -sizeof(uint16_t), SEEK_CUR);
-            number = number * 2;
+            number *= 2;
             fwrite(&number, sizeof(uint16_t), 1, archivo);
         }
     }
@@ -25,8 +27,8 @@ int prueba1(char *nombre){
     }
     fclose(archivo);
     return 0;
-
 }
+
 
 /*
 Modos de apertura de archivos (fopen)

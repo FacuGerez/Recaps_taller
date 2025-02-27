@@ -1,0 +1,3 @@
+/home/facu/Desktop/Recaps_taller/final taller/build/CMakeFiles/archivos.dir
+/home/facu/Desktop/Recaps_taller/final taller/build/CMakeFiles/edit_cache.dir
+/home/facu/Desktop/Recaps_taller/final taller/build/CMakeFiles/rebuild_cache.dir
