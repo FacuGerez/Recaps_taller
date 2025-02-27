@@ -1,4 +1,7 @@
 
+// Mas apuntes ademas del pdf aca:
+// https://jordafiuba.notion.site/a0ac853716dc4be4b25a810ca899a71f?v=e83daba8dafa4c5ab65587607ae9bfb5
+
 #include <cstdio>
 
 int prueba1(char *nombre){
