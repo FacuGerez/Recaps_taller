@@ -10,3 +10,6 @@
 [submodule "threads-2024c2-FacuGerez"]
 	path = threads-2024c2-FacuGerez
 	url = https://github.com/Taller-de-Programacion-TPs/threads-2024c2-FacuGerez.git
+[submodule "examenes"]
+	path = examenes
+	url = https://github.com/Taller-de-Programacion/examenes.git
