@@ -3,6 +3,8 @@
 // https://jordafiuba.notion.site/a0ac853716dc4be4b25a810ca899a71f?v=e83daba8dafa4c5ab65587607ae9bfb5
 
 #include <cstdio>
+#include <cstdint>
+#include <unistd.h>
 
 int prueba1(char *nombre){
     FILE *archivo = fopen(nombre, "r+b");
