@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "/home/facu/Desktop/Recaps_taller/final taller"
+    "cmake.sourceDirectory": "/home/facu/Desktop/Recaps_taller/final taller",
+    "files.associations": {
+        "cstdlib": "cpp"
+    }
 }

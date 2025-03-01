@@ -5,10 +5,12 @@
 #include <cstdio>
 #include <cstdint>
 #include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
 
 // Escribir un programa ISO C que procese el archivo “nros2bytes.dat” sobre sí mismo,
 // duplicando los enteros de 2 bytes múltiplos de 3.
-
+/*
 int main(){
     FILE *archivo = fopen("nros2bytes.dat", "r+b");
     if(archivo == NULL) return -1;
@@ -28,6 +30,102 @@ int main(){
     fclose(archivo);
     return 0;
 }
+*/
+
+
+// Escribir un programa ISO C  que procese el archivo de  enteros de 2 bytes bigendian cuyo
+// nombre es recibido como parámetro.  El procesamiento consiste en  eliminar los número
+// múltiplos   de   3,  trabajando sobre el mismo archivo (sin archivos intermedios ni en
+// memoria).
+
+/*
+int main(int argc, char const *argv[]){
+    if (argc != 2) return -1;
+    const char *filename = argv[1];
+
+    FILE *archivo = fopen(filename,
+                          "r+b");
+    if (archivo == NULL) return -1;
+
+    uint16_t number;
+    long read, writte = 0;
+    while (fread(&number, sizeof(uint16_t), 1, archivo) == 1){
+        read = ftell(archivo);
+        if (number % 3 != 0){
+            fseek(archivo, writte, SEEK_SET);
+            fwrite(&number, sizeof(uint16_t), 1, archivo);
+            writte += sizeof(uint16_t);
+            fseek(archivo, read, SEEK_SET);
+        }
+    }
+
+    if (ftruncate(fileno(archivo), writte) == -1) {
+        std::printf("Error truncando el archivo\n");
+    }
+    fclose(archivo);
+    return 0;
+}
+*/
+
+// Escribir un programa ISO C que reciba por argumento el nombre de un archivo de texto
+// y loprocese sobre sí mismo (sin crear archivos intermedios ni subiendo todo su contenido amemoria).
+// El procesamiento consiste en eliminar las líneas de 1 sola palabra.
+
+/*
+int main(int argc, char const *argv[])
+{
+    if (argc != 2) return -1;
+    const char *filename = argv[1];
+
+    FILE *archivo = fopen(filename,"r+");
+    if (archivo == NULL) return -1;
+
+    char buffer[100];
+    long read, writte = 0;
+    while (fgets(buffer, sizeof(buffer), archivo) != NULL){
+        read = ftell(archivo);
+        if (strchr(buffer, ' ') != NULL){ // strchr busca un caracter en un string, si lo encuentra devuelve un puntero a ese caracter, si no devuelve NULL
+            fseek(archivo, writte, SEEK_SET);
+            fputs(buffer, archivo); // esta funcion escribe en el archivo lo que esta en el buffer
+            writte = ftell(archivo);
+            fseek(archivo, read, SEEK_SET);
+        }
+    }
+    if (ftruncate(fileno(archivo), writte) == -1) {
+        std::printf("Error truncando el archivo\n");
+    }
+    fclose(archivo);
+    return 0;
+}
+*/
+
+
+// Escribir un programa C  que procese el archivo “numeros.txt” sobre sí mismo (sin creararchivos intermedios y sin subir el archivo a memoria).
+//  El procesamiento consiste en leergrupos de 4 caracteres hexadecimales y reemplazarlos por los correspondientes
+// dígitosdecimales (que representen el mismo número leído pero en decimal)
+
+int main(){
+    FILE *archivo = fopen("numeros.txt", "r+");
+    if(archivo == NULL) return -1;
+
+    char buffer[5];
+    long read, writte = 0;
+    while (fgets(buffer, sizeof(buffer), archivo) != NULL){
+        read = ftell(archivo);
+        int number = strtol(buffer, NULL, 16); // strtol convierte un string a un numero, en este caso a un numero en base 16
+        fseek(archivo, writte, SEEK_SET);
+        fwrite(&number, sizeof(int), 1, archivo);
+        writte = ftell(archivo);
+        fseek(archivo, read, SEEK_SET);
+    }
+
+    if (ftruncate(fileno(archivo), writte) == -1) {
+        std::printf("Error truncando el archivo\n");
+    }
+    fclose(archivo);
+    return 0;
+}
+
 
 
 /*
