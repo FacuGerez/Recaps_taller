@@ -110,15 +110,17 @@ int main(){
 
     char buffer[5];
     long read, writte = 0;
-    while (fgets(buffer, sizeof(buffer), archivo) != NULL){
+    while (fread(buffer, sizeof(char), 4, archivo) == 4){
         read = ftell(archivo);
-        int number = strtol(buffer, NULL, 16); // strtol convierte un string a un numero, en este caso a un numero en base 16
+        int number = strtol(buffer, NULL, 16);
+        // Obtener la representación en char del número decimal
+        char decimal_str[5];
+        snprintf(decimal_str, sizeof(decimal_str), "%d", decimal_value);
         fseek(archivo, writte, SEEK_SET);
-        fwrite(&number, sizeof(int), 1, archivo);
+        fwrite(decimal_str, sizeof(char), len, archivo);
         writte = ftell(archivo);
         fseek(archivo, read, SEEK_SET);
     }
-
     if (ftruncate(fileno(archivo), writte) == -1) {
         std::printf("Error truncando el archivo\n");
     }
