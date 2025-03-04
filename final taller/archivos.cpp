@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
+#include <iostream>
 
 // Escribir un programa ISO C que procese el archivo “nros2bytes.dat” sobre sí mismo,
 // duplicando los enteros de 2 bytes múltiplos de 3.
@@ -103,7 +104,7 @@ int main(int argc, char const *argv[])
 // Escribir un programa C  que procese el archivo “numeros.txt” sobre sí mismo (sin creararchivos intermedios y sin subir el archivo a memoria).
 //  El procesamiento consiste en leergrupos de 4 caracteres hexadecimales y reemplazarlos por los correspondientes
 // dígitosdecimales (que representen el mismo número leído pero en decimal)
-
+/*
 int main(){
     FILE *archivo = fopen("numeros.txt", "r+");
     if(archivo == NULL) return -1;
@@ -115,9 +116,9 @@ int main(){
         int number = strtol(buffer, NULL, 16);
         // Obtener la representación en char del número decimal
         char decimal_str[5];
-        snprintf(decimal_str, sizeof(decimal_str), "%d", decimal_value);
+        snprintf(decimal_str, sizeof(decimal_str), "%d", number);
         fseek(archivo, writte, SEEK_SET);
-        fwrite(decimal_str, sizeof(char), len, archivo);
+        fwrite(decimal_str, sizeof(char), 4, archivo);
         writte = ftell(archivo);
         fseek(archivo, read, SEEK_SET);
     }
@@ -126,7 +127,7 @@ int main(){
     }
     fclose(archivo);
     return 0;
-}
+}*/
 
 static int a;
 int b()
@@ -136,8 +137,12 @@ int b()
     return c + (int)d;
 }
 
-
-
+int main()
+{
+    std::cout << a << std::endl;
+    std::cout << b() << std::endl;
+    return 0;
+}
 
 /*
 Modos de apertura de archivos (fopen)

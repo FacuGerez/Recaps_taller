@@ -1,7 +1,8 @@
 {
     "cmake.sourceDirectory": "/home/facu/Desktop/Recaps_taller/final taller",
     "files.associations": {
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "*.tcc": "cpp"
     },
     "cmake.ignoreCMakeListsMissing": true
 }
