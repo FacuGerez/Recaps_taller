@@ -128,6 +128,15 @@ int main(){
     return 0;
 }
 
+static int a;
+int b()
+{
+    static int c;
+    char d = 65;
+    return c + (int)d;
+}
+
+
 
 
 /*
